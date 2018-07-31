@@ -14,7 +14,11 @@
 
   {{ with .Params.thumbnail }}<div class="thumb" style="background-image: url({{ $.Site.BaseURL }}{{ . }});"></div>{{ end }}
 
-  <div class="article-body">{{ .Content }}</div>
+  <div class="article-body">{{ .Content }}
+    <div class="ad">
+      {{ partial "ad.html" . }}
+    </div>
+  </div>
 
   <footer class="article-footer">
     {{ $params := .Params }}

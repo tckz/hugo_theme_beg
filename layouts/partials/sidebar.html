@@ -2,6 +2,12 @@
 <aside class="l-sidebar">
 
   <section class="panel panel-default">
+    <div class="list-group">
+      {{ partial "about.html" . }}
+    </div>
+  </section>
+
+  <section class="panel panel-default">
     <div class="panel-heading">
       <div class="panel-title">LATESTS</div>
     </div>
@@ -15,7 +21,11 @@
   {{ range $key, $value := .Site.Taxonomies }}
   <section class="panel panel-default">
     <div class="panel-heading">
-      <div class="panel-title">{{ $key | singularize | upper }}</div>
+      <div class="panel-title">
+        <a href="{{ $.Site.BaseURL}}{{ $key | urlize }}">
+	      {{ $key | singularize | upper }}
+	    </a>
+	  </div>
     </div>
     <div class="list-group">
       {{ range first 10 $value.ByCount }}
